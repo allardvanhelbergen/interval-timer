@@ -5,7 +5,7 @@ import CountdownControls from '../CountdownControls/CountdownControls';
 import './Countdown.css';
 
 
-const DEFAULT_TIME_REMAINING = 45;
+const DEFAULT_TIME_REMAINING = 0;
 
 
 class Countdown extends React.Component {
@@ -13,8 +13,9 @@ class Countdown extends React.Component {
     super(props);
 
     this.state = {
+      startTime: DEFAULT_TIME_REMAINING,
       timeRemaining: 0,
-      live: false
+      isRunning: false,
     }
 
     this.reset = this.reset.bind(this);
@@ -29,14 +30,14 @@ class Countdown extends React.Component {
     });
 
     if (this.state.timeRemaining < 0) {
-      this.reset();
+      this.props.onEnd();
     }
   }
 
   start() {
     this.setState(() => {
       return {
-        live: true
+        isRunning: true
       }
     });
 
@@ -46,7 +47,7 @@ class Countdown extends React.Component {
   stop() {
     this.setState(() => {
       return {
-        live: false,
+        isRunning: false,
       }
     });
 
@@ -58,7 +59,7 @@ class Countdown extends React.Component {
 
     this.setState(() => {
       return {
-        timeRemaining: DEFAULT_TIME_REMAINING
+        timeRemaining: this.state.startTime
       }
     })
 
@@ -70,18 +71,28 @@ class Countdown extends React.Component {
   }
 
   startStop() {
-    if (this.state.live) {
+    if (this.state.isRunning) {
       this.stop();
     } else {
       this.start();
     }
   }
 
+  componentWillReceiveProps(newProps) {
+    this.setState(() => {
+      return {
+        timeRemaining: newProps.time,
+        startTime: newProps.time,
+      };
+    });
+  }
+
   componentDidMount() {
     this.setState(function() {
       return {
-        timeRemaining: this.props.time
-      }
+        timeRemaining: this.props.time,
+        startTime: this.props.time,
+      };
     });
   }
 
@@ -94,9 +105,9 @@ class Countdown extends React.Component {
       <div>
         <CountdownFace time={this.state.timeRemaining} />
         <CountdownControls
-            startStop={this.startStop}
-            reset={this.reset}
-            live={this.state.live}
+          startStop={this.startStop}
+          reset={this.reset}
+          isRunning={this.state.isRunning}
         />
       </div>
     );

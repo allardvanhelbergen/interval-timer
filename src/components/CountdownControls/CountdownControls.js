@@ -7,7 +7,7 @@ function CountdownControls(props) {
   return (
     <div>
       <button className='button' onClick={props.startStop}>
-        {(props.live) ? 'Stop' : 'Start'}
+        {(props.isRunning) ? 'Stop' : 'Start'}
       </button>
       <button className='button' onClick={props.reset}>
         Reset
@@ -20,7 +20,7 @@ function CountdownControls(props) {
 CountdownControls.propTypes = {
   startStop: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
-  live: PropTypes.bool.isRequired,
+  isRunning: PropTypes.bool.isRequired,
 }
 
 
