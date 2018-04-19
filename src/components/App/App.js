@@ -9,7 +9,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      intervals: [ 2, 7, 9 ],
+      intervals: [ 2, 2 ],
       currentInterval: 0,
       isRunning: false,
     }
@@ -45,6 +45,7 @@ class App extends Component {
         <Countdown
           time={this.state.intervals[this.state.currentInterval]}
           onEnd={this.handleCountdownEnd}
+          isRunning={this.state.isRunning}
         />
       </div>
     );
