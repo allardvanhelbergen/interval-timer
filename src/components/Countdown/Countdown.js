@@ -83,6 +83,7 @@ class Countdown extends React.Component {
       return {
         timeRemaining: newProps.time,
         startTime: newProps.time,
+        isRunning: newProps.isRunning,
       };
     });
   }
@@ -92,6 +93,7 @@ class Countdown extends React.Component {
       return {
         timeRemaining: this.props.time,
         startTime: this.props.time,
+        isRunning: this.props.isRunning,
       };
     });
   }
