@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import Countdown from '../Countdown/Countdown';
+import PropTypes from 'prop-types';
 import IntervalList from '../IntervalList/IntervalList';
+import CountdownFace from '../CountdownFace/CountdownFace';
+import CountdownControls from '../CountdownControls/CountdownControls';
 import './App.css';
 
 
@@ -9,31 +11,91 @@ class App extends Component {
     super(props);
 
     this.state = {
-      intervals: [ 2, 2 ],
       currentInterval: 0,
       isRunning: false,
+      timeRemaining: 0,
     }
 
-    this.handleCountdownEnd = this.handleCountdownEnd.bind(this);
+    this.reset = this.reset.bind(this);
+    this.startStop = this.startStop.bind(this);
   }
 
   handleCountdownEnd() {
-    this.setState(() => {return { isRunning: false };})
+    let nextInterval = this.state.currentInterval + 1;
 
-    if (this.state.currentInterval < this.state.intervals.length) {
-      this.setState((currentState) => {
+    if (nextInterval >= this.props.intervals.length) {
+      this.stop();
+    } else {
+      this.setState((currentState, props) => {
         return {
-          currentInterval: currentState.currentInterval + 1,
-          isRunning: true,
+          currentInterval: nextInterval,
+          timeRemaining: props.intervals[nextInterval],
         };
-      })
+      });
+    }
+  }
+
+  startStop() {
+    if (this.state.isRunning) {
+      this.stop();
+    } else {
+      this.start();
+    }
+  }
+
+  reset() {
+    this.stop();
+
+    this.setState((currentState, props) => {
+      return {
+        timeRemaining: props.intervals[currentState.currentInterval],
+      }
+    })
+
+    this.start();
+  }
+
+  start() {
+    this.setState(() => {
+      return {
+        isRunning: true,
+      }
+    });
+
+    this.interval = window.setInterval(this.tick.bind(this), 1000);  // 1 sec
+  }
+
+  stop() {
+    this.setState(() => {
+      return {
+        isRunning: false,
+      }
+    });
+
+    this.clear();
+  }
+
+  clear() {
+    window.clearInterval(this.interval);
+  }
+
+  tick() {
+    if (this.state.timeRemaining <= 0) {
+      this.handleCountdownEnd();
+    } else {
+      this.setState(function(currentState) {
+        return {
+          timeRemaining: currentState.timeRemaining - 1,
+        }
+      });
     }
   }
 
   componentDidMount() {
-    this.setState(function() {
+    this.setState((currentState, props) => {
       return {
         isRunning: false,
+        timeRemaining: props.intervals[currentState.currentInterval],
       }
     });
   }
@@ -41,24 +103,30 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <IntervalList intervals={this.state.intervals} />
-        <Countdown
-          time={this.state.intervals[this.state.currentInterval]}
-          onEnd={this.handleCountdownEnd}
-          isRunning={this.state.isRunning}
-        />
+        <IntervalList intervals={this.props.intervals} />
+        <div>
+          <CountdownFace time={this.state.timeRemaining} />
+          <CountdownControls
+            startStop={this.startStop}
+            reset={this.reset}
+            isRunning={this.state.isRunning}
+          />
+        </div>
       </div>
     );
   }
 }
 
 
+App.propTypes = {
+  intervals: PropTypes.array,
+};
+
+
+App.defaultProps = {
+  intervals: [2, 3, 4],
+}
+
+
+
 export default App;
-
-
-
-
-// {this.state.isRunning && <Countdown
-//           time={this.state.intervals[this.state.currentInterval]}
-//           onEnd={this.handleCountdownEnd}
-//         />}
