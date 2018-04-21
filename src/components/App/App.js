@@ -94,10 +94,13 @@ class App extends Component {
   componentDidMount() {
     this.setState((currentState, props) => {
       return {
-        isRunning: false,
         timeRemaining: props.intervals[currentState.currentInterval],
       }
     });
+  }
+
+  componentWillUnmount() {
+    this.clear();
   }
 
   render() {
