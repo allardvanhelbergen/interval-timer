@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import {css} from 'emotion';
 import IntervalList from '../IntervalList/IntervalList';
 import CountdownFace from '../CountdownFace/CountdownFace';
 import CountdownControls from '../CountdownControls/CountdownControls';
-import './App.css';
+
+
+const STYLES = css`
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+`;
 
 
 class App extends Component {
@@ -105,8 +114,8 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <IntervalList intervals={this.props.intervals} />
+      <div className={STYLES}>
+        <IntervalList intervals={this.props.intervals} currentInterval={this.state.currentInterval}/>
         <div>
           <CountdownFace time={this.state.timeRemaining} />
           <CountdownControls
