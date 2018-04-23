@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {css} from 'emotion';
+import styles from '../../sharedStyles';
 
 
 const STYLES = css`
-  color: #bad455;
+  color: ${styles.colorPrimary};
   margin: 50px;
-  font-size: 20em;
+  font-size: 20rem;
 `;
 
 

@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {css} from 'emotion';
+import styles from '../../sharedStyles';
 
 
 const STYLES = css`
   background-color: rgba(0, 0, 0, .1);
-  border-radius: 3px;
-  font-size: 26px;
+  border-radius: ${styles.borderRadius};
   margin: 20px;
   min-height: 300px;
   padding: 10px;
@@ -14,9 +14,11 @@ const STYLES = css`
 
   .interval {
     margin: 10px 0;
+    border-radius: ${styles.borderRadius};
 
     &--current {
-      background-color: #bad455;
+      background-color: ${styles.colorPrimary};
+      color: ${styles.colorWhite};
     }
   }
 `;
