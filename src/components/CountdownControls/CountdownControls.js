@@ -1,34 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {css} from 'emotion';
+import styles from '../../sharedStyles';
 
 
 const STYLES = css`
   .button {
-    background-color:#bad455;
-    -moz-border-radius:4px;
-    -webkit-border-radius:4px;
-    border-radius:4px;
-    border:1px solid #4b8f29;
-    display:inline-block;
-    cursor:pointer;
-    color:#fff;
-    font-size:28px;
-    font-weight:bold;
-    padding:22px 55px;
-    text-decoration:none;
-    text-shadow:0px 1px 0px #5b8a3c;
+    background-color: ${styles.colorPrimary};
+    border-radius: ${styles.borderRadius};
+    border: 1px solid #4b8f29;
+    color: ${styles.colorWhite};
+    cursor: pointer;
+    display: inline-block;
+    font-size: ${styles.fontSize};
+    font-weight: bold;
     margin: 20px;
+    padding: 22px 55px;
+    text-decoration: none;
+    text-shadow: 0 1px 0 #5b8a3c;
     width: 200px;
   }
 
   .button:hover {
-    background-color:#72b352;
+    background-color: #72b352;
   }
 
   .button:active {
-    position:relative;
-    top:1px;
+    position: relative;
+    top: 1px;
   }
 `;
 
