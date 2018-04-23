@@ -90,5 +90,8 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "devDependencies": {
+    "emotion": "^9.1.2"
   }
 }
