@@ -4,6 +4,7 @@ import {injectGlobal} from 'emotion';
 import App from './components/App/App';
 import registerServiceWorker from './registerServiceWorker';
 import styles from './sharedStyles.js';
+import * as intervalData from './intervals.json';
 
 
 injectGlobal`
@@ -19,7 +20,7 @@ injectGlobal`
 
 
 ReactDOM.render(
-  <App />,
+  <App intervals={intervalData.intervals}/>,
   document.getElementById('root')
 );
 
