@@ -11,6 +11,7 @@ const STYLES = css`
   min-height: 300px;
   padding: 10px;
   width: 200px;
+  text-align: center;
 
   .interval {
     margin: 10px 0;
