@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {css} from 'emotion';
+import { css } from 'emotion';
 import styles from '../../sharedStyles';
 
 
@@ -10,16 +10,27 @@ const STYLES = css`
   margin: 20px;
   min-height: 300px;
   padding: 10px;
-  width: 200px;
-  text-align: center;
+  width: 400px;
 
   .interval {
     margin: 10px 0;
     border-radius: ${styles.borderRadius};
+    text-align: left;
 
     &--current {
       background-color: ${styles.colorPrimary};
       color: ${styles.colorWhite};
+    }
+
+    .time,
+    .description {
+      display: inline-block;
+      padding: 10px 20px;
+    }
+
+    .time {
+      width: 100px;
+      text-align: right;
     }
   }
 `;
@@ -29,19 +40,21 @@ function IntervalList(props) {
   return (
     <div className={STYLES}>
       {props.intervals.map((interval, i) => {
+        const {time, description} = interval;
+
         return (
           <div
-              key={interval + '-' + i}
+              key={time + '-' + i}
               className={'interval ' + ((i === props.currentInterval) ? 'interval--current' : '')}
           >
-            <span>{interval}</span>
+            <div className="time">{time}</div>
+            <div className="description">{description}</div>
           </div>
         )
       })}
     </div>
   );
 }
-
 
 
 IntervalList.propTypes = {

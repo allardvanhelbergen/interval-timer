@@ -20,10 +20,16 @@ injectGlobal`
 
 
 storiesOf('Countdown face', module)
-  .add('with timeRemaining', () => (
+  .add('with time', () => (
     <CountdownFace time={60}/>
   ))
-  .add('without timeRemaining', () => (
+  .add('with some time', () => (
+    <CountdownFace time={9}/>
+  ))
+  .add('with little time', () => (
+    <CountdownFace time={3}/>
+  ))
+  .add('no time remaining', () => (
     <CountdownFace time={0}/>
   ));
 
@@ -41,7 +47,13 @@ storiesOf('Countdown controls', module)
 storiesOf('Interval list', module)
   .add('default', () => (
     <IntervalList
-      intervals={[60, 30, 40, 50, 20]}
+      intervals={[
+        {time: 60, description: "Stretch"},
+        {time: 30, description: "Jump"},
+        {time: 40, description: "Lunge"},
+        {time: 50, description: "Lift"},
+        {time: 20, description: "Cool down"},
+      ]}
       currentInterval={1}
     />
   ));

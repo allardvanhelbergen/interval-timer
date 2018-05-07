@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {css} from 'emotion';
+import { css } from 'emotion';
 import IntervalList from '../IntervalList/IntervalList';
 import CountdownFace from '../CountdownFace/CountdownFace';
 import CountdownControls from '../CountdownControls/CountdownControls';
@@ -11,7 +11,10 @@ const STYLES = css`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  text-align: center;
+
+  .countdown {
+    text-align: center;
+  }
 `;
 
 
@@ -38,7 +41,7 @@ class App extends Component {
       this.setState((currentState, props) => {
         return {
           currentInterval: nextInterval,
-          timeRemaining: props.intervals[nextInterval],
+          timeRemaining: props.intervals[nextInterval].time,
         };
       });
     }
@@ -57,7 +60,7 @@ class App extends Component {
 
     this.setState((currentState, props) => {
       return {
-        timeRemaining: props.intervals[currentState.currentInterval],
+        timeRemaining: props.intervals[currentState.currentInterval].time,
       }
     })
 
@@ -103,7 +106,7 @@ class App extends Component {
   componentDidMount() {
     this.setState((currentState, props) => {
       return {
-        timeRemaining: props.intervals[currentState.currentInterval],
+        timeRemaining: props.intervals[currentState.currentInterval].time,
       }
     });
   }
@@ -116,7 +119,7 @@ class App extends Component {
     return (
       <div className={STYLES}>
         <IntervalList intervals={this.props.intervals} currentInterval={this.state.currentInterval}/>
-        <div>
+        <div className="countdown">
           <CountdownFace time={this.state.timeRemaining} />
           <CountdownControls
             startStop={this.startStop}
