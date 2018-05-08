@@ -28,8 +28,20 @@ class App extends Component {
       timeRemaining: 0,
     }
 
+    this.handleStartInterval = this.handleStartInterval.bind(this);
     this.reset = this.reset.bind(this);
     this.startStop = this.startStop.bind(this);
+  }
+
+  handleStartInterval() {
+    let newInterval = arguments[0];
+
+    this.setState((currentState, props) => {
+      return {
+        currentInterval: newInterval,
+        timeRemaining: props.intervals[newInterval].time,
+      };
+    });
   }
 
   handleCountdownEnd() {
@@ -118,7 +130,11 @@ class App extends Component {
   render() {
     return (
       <div className={STYLES}>
-        <IntervalList intervals={this.props.intervals} currentInterval={this.state.currentInterval}/>
+        <IntervalList
+          intervals={this.props.intervals}
+          currentInterval={this.state.currentInterval}
+          startIntervalFunc={this.handleStartInterval}
+        />
         <div className="countdown">
           <CountdownFace time={this.state.timeRemaining} />
           <CountdownControls

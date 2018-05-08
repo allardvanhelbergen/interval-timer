@@ -45,6 +45,7 @@ function IntervalList(props) {
         return (
           <div
               key={time + '-' + i}
+              onClick={props.startIntervalFunc.bind(this, i)}
               className={'interval ' + ((i === props.currentInterval) ? 'interval--current' : '')}
           >
             <div className="time">{time}</div>
