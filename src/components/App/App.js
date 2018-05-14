@@ -33,6 +33,15 @@ class App extends Component {
     this.startStop = this.startStop.bind(this);
   }
 
+  formatTime(time) {
+    if (time > 60) {
+      let min = Math.floor(time / 60);
+      let sec = time % 60;
+      return `${min}:${sec}`;
+    }
+    return time;
+  }
+
   handleStartInterval() {
     let newInterval = arguments[0];
 
@@ -136,7 +145,7 @@ class App extends Component {
           startIntervalFunc={this.handleStartInterval}
         />
         <div className="countdown">
-          <CountdownFace time={this.state.timeRemaining} />
+          <CountdownFace time={this.formatTime(this.state.timeRemaining)} />
           <CountdownControls
             startStop={this.startStop}
             reset={this.reset}
