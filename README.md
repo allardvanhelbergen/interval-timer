@@ -1,4 +1,4 @@
-#interval-timer
+# interval-timer
 
 A react interval timer for me to learn stuff.
 
@@ -6,5 +6,12 @@ A react interval timer for me to learn stuff.
 
 - `yarn`
 - `yarn start`
+
+## Storybook
+
+- `yarn storybook`
+
+
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
