@@ -61,6 +61,13 @@ function IntervalList(props) {
 IntervalList.propTypes = {
   currentInterval: PropTypes.number,
   intervals: PropTypes.array,
+  startIntervalFunc: PropTypes.func,
+};
+
+IntervalList.defaultProps ={
+  currentInterval: 0,
+  intervals: 0,
+  startIntervalFunc: () => {},
 };
 
 
