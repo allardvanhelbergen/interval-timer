@@ -5,29 +5,32 @@ import styles from '../../sharedStyles';
 
 
 const STYLES = css`
+  grid-row-start: 2;
+
   .button {
-    background-color: ${styles.colorPrimary};
+    background-color: transparent;
     border-radius: ${styles.borderRadius};
-    border: 1px solid #4b8f29;
+    border-color: transparent;
     color: ${styles.colorWhite};
     cursor: pointer;
     display: inline-block;
     font-size: ${styles.fontSize};
     font-weight: bold;
-    margin: 20px;
-    padding: 22px 55px;
+    margin: 1rem;
+    padding: 1.5rem 3.5rem;
     text-decoration: none;
-    text-shadow: 0 1px 0 #5b8a3c;
-    width: 200px;
+    width: 12rem;
   }
-
+  
   .button:hover {
-    background-color: #72b352;
+    background-color: #a1a1a1;
+    border: 1px solid #929292;
+    text-shadow: 0 1px 0 #929292;
   }
 
   .button:active {
+    background-color: #323232;
     position: relative;
-    top: 1px;
   }
 `;
 

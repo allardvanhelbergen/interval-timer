@@ -5,10 +5,12 @@ import styles from '../../sharedStyles';
 
 
 const STYLES = css`
-  color: ${styles.colorPrimary};
-  margin: 50px;
-  font-size: 20rem;
-
+  color: ${styles.colorWhite};
+  font-size: 32rem;
+  font-weight: 900;
+  text-align: center;
+  grid-row-start: 1;
+  
   .time--some {
     color: gold;
   }

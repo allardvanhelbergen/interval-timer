@@ -4,6 +4,7 @@ import { css } from 'emotion';
 import IntervalList from '../IntervalList/IntervalList';
 import CountdownFace from '../CountdownFace/CountdownFace';
 import CountdownControls from '../CountdownControls/CountdownControls';
+import styles from '../../sharedStyles';
 
 
 const STYLES = css`
@@ -11,9 +12,15 @@ const STYLES = css`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  font-family: ${styles.fontFamily};
 
   .countdown {
-    text-align: center;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 75% 25%;
+    justify-items: center;
+    justify-content: center;
+    align-content: center;
   }
 `;
 
@@ -139,11 +146,11 @@ class App extends Component {
   render() {
     return (
       <div className={STYLES}>
-        <IntervalList
+        {/* <IntervalList
           intervals={this.props.intervals}
           currentInterval={this.state.currentInterval}
           startIntervalFunc={this.handleStartInterval}
-        />
+        /> */}
         <div className="countdown">
           <CountdownFace time={this.formatTime(this.state.timeRemaining)} />
           <CountdownControls
