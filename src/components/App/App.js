@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { css } from 'emotion';
-import IntervalList from '../IntervalList/IntervalList';
-import CountdownFace from '../CountdownFace/CountdownFace';
-import CountdownControls from '../CountdownControls/CountdownControls';
-import styles from '../../sharedStyles';
-
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { css } from "emotion";
+import IntervalList from "../IntervalList/IntervalList";
+import CountdownFace from "../CountdownFace/CountdownFace";
+import CountdownControls from "../CountdownControls/CountdownControls";
+import styles from "../../sharedStyles";
 
 const STYLES = css`
   align-items: center;
@@ -22,8 +21,17 @@ const STYLES = css`
     justify-content: center;
     align-content: center;
   }
-`;
 
+  .background {
+    position: absolute;
+    background-color: hotpink;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+`;
 
 class App extends Component {
   constructor(props) {
@@ -32,8 +40,8 @@ class App extends Component {
     this.state = {
       currentInterval: 0,
       isRunning: false,
-      timeRemaining: 0,
-    }
+      timeRemaining: 0
+    };
 
     this.handleStartInterval = this.handleStartInterval.bind(this);
     this.reset = this.reset.bind(this);
@@ -55,7 +63,7 @@ class App extends Component {
     this.setState((currentState, props) => {
       return {
         currentInterval: newInterval,
-        timeRemaining: props.intervals[newInterval].time,
+        timeRemaining: props.intervals[newInterval].time
       };
     });
   }
@@ -69,7 +77,7 @@ class App extends Component {
       this.setState((currentState, props) => {
         return {
           currentInterval: nextInterval,
-          timeRemaining: props.intervals[nextInterval].time,
+          timeRemaining: props.intervals[nextInterval].time
         };
       });
     }
@@ -88,9 +96,9 @@ class App extends Component {
 
     this.setState((currentState, props) => {
       return {
-        timeRemaining: props.intervals[currentState.currentInterval].time,
-      }
-    })
+        timeRemaining: props.intervals[currentState.currentInterval].time
+      };
+    });
 
     this.start();
   }
@@ -98,18 +106,18 @@ class App extends Component {
   start() {
     this.setState(() => {
       return {
-        isRunning: true,
-      }
+        isRunning: true
+      };
     });
 
-    this.interval = window.setInterval(this.tick.bind(this), 1000);  // 1 sec
+    this.interval = window.setInterval(this.tick.bind(this), 1000); // 1 sec
   }
 
   stop() {
     this.setState(() => {
       return {
-        isRunning: false,
-      }
+        isRunning: false
+      };
     });
 
     this.clear();
@@ -125,8 +133,8 @@ class App extends Component {
     } else {
       this.setState(function(currentState) {
         return {
-          timeRemaining: currentState.timeRemaining - 1,
-        }
+          timeRemaining: currentState.timeRemaining - 1
+        };
       });
     }
   }
@@ -134,8 +142,8 @@ class App extends Component {
   componentDidMount() {
     this.setState((currentState, props) => {
       return {
-        timeRemaining: props.intervals[currentState.currentInterval].time,
-      }
+        timeRemaining: props.intervals[currentState.currentInterval].time
+      };
     });
   }
 
@@ -159,21 +167,18 @@ class App extends Component {
             isRunning={this.state.isRunning}
           />
         </div>
+        <div className="background">This is the background.</div>
       </div>
     );
   }
 }
 
-
 App.propTypes = {
-  intervals: PropTypes.array,
+  intervals: PropTypes.array
 };
 
-
 App.defaultProps = {
-  intervals: [2, 3, 4],
-}
-
-
+  intervals: [2, 3, 4]
+};
 
 export default App;
