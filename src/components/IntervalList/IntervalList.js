@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'emotion';
-import styles from '../../sharedStyles';
+import styles from '../../utils/styleTokens';
 
 
 const STYLES = css`

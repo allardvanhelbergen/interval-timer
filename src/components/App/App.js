@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { css } from "emotion";
-import IntervalList from "../IntervalList/IntervalList";
+// import IntervalList from "../IntervalList/IntervalList";
 import CountdownFace from "../CountdownFace/CountdownFace";
 import CountdownControls from "../CountdownControls/CountdownControls";
-import styles from "../../sharedStyles";
+import styles from "../../utils/styleTokens";
 
 const STYLES = css`
   align-items: center;
