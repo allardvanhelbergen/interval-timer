@@ -7,9 +7,9 @@ import { injectGlobal } from 'emotion';
 
 import { globalStyles } from '../src/utils/globalStyles';
 import BackgroundAnimation from '../src/components/BackgroundAnimation';
-import CountdownControls from '../src/components/CountdownControls/CountdownControls.js'
-import CountdownFace from '../src/components/CountdownFace/CountdownFace.js';
-import IntervalList from '../src/components/IntervalList/IntervalList.js';
+import CountdownControls from '../src/components/CountdownControls'
+import CountdownFace from '../src/components/CountdownFace';
+import IntervalList from '../src/components/IntervalList';
 
 injectGlobal`
   ${globalStyles}
