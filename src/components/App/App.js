@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { css } from "emotion";
+import BackgroundAnimation from '../BackgroundAnimation';
 // import IntervalList from "../IntervalList/IntervalList";
 import CountdownFace from "../CountdownFace/CountdownFace";
 import CountdownControls from "../CountdownControls/CountdownControls";
@@ -167,7 +168,7 @@ class App extends Component {
             isRunning={this.state.isRunning}
           />
         </div>
-        <div className="background">This is the background.</div>
+        <BackgroundAnimation />
       </div>
     );
   }
