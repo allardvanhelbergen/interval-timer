@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { css } from "emotion";
 import BackgroundAnimation from '../BackgroundAnimation';
-// import IntervalList from "../IntervalList/IntervalList";
-import CountdownFace from "../CountdownFace/CountdownFace";
-import CountdownControls from "../CountdownControls/CountdownControls";
+// import IntervalList from "../IntervalList";
+import CountdownFace from "../CountdownFace";
+import CountdownControls from "../CountdownControls";
 import styles from "../../utils/styleTokens";
 
 const STYLES = css`

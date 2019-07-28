@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { injectGlobal } from 'emotion';
 import App from './components/App';
 // import tokens from './utils/styleTokens';
-import { globalStyles } from '../src/utils/globalStyles';
+import { globalStyles } from './utils/globalStyles';
 import * as serviceWorker from './serviceWorker';
 import * as intervalData from './intervals.json';
 
