@@ -12,10 +12,17 @@ let randomInt = (max, min = 0) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+/**
+ * This background is inspired by https://codepen.io/Mamboleoo/pen/BxMQYQ.
+ */
 const Background = styled.div`
   width: 100vw;
   height: 100vh;
   background: ${tokens.colorGray3};
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
 
   & span {
     width: ${particleSize}vmin;
@@ -48,10 +55,6 @@ const Background = styled.div`
               0 
               ${(Math.random() + 0.5) * particleSize * 0.5}vmin 
               ${bgColor};
-            
-            // $blurRadius: (random() + 0.5) * $particleSize * 0.5;
-            // $x: if(random() > 0.5, -1, 1);
-            // box-shadow: ($particleSize * 2 * $x) 0 $blurRadius currentColor;
           }
         `
       }
