@@ -1,37 +1,27 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { css } from "emotion";
+import styled from "@emotion/styled";
 import BackgroundAnimation from '../BackgroundAnimation';
 // import IntervalList from "../IntervalList";
 import CountdownFace from "../CountdownFace";
 import CountdownControls from "../CountdownControls";
 import styles from "../../utils/styleTokens";
 
-const STYLES = css`
+const LAYOUT = styled.div`
   align-items: center;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   font-family: ${styles.fontFamily};
+`;
 
-  .countdown {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: 75% 25%;
-    justify-items: center;
-    justify-content: center;
-    align-content: center;
-  }
-
-  .background {
-    position: absolute;
-    background-color: hotpink;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-  }
+const COUNTDOWN = styled.div`
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 75% 25%;
+  justify-items: center;
+  justify-content: center;
+  align-content: center;
 `;
 
 class App extends Component {
@@ -154,22 +144,22 @@ class App extends Component {
 
   render() {
     return (
-      <div className={STYLES}>
+      <LAYOUT>
         {/* <IntervalList
           intervals={this.props.intervals}
           currentInterval={this.state.currentInterval}
           startIntervalFunc={this.handleStartInterval}
         /> */}
-        <div className="countdown">
+        <COUNTDOWN>
           <CountdownFace time={this.formatTime(this.state.timeRemaining)} />
           <CountdownControls
             startStop={this.startStop}
             reset={this.reset}
             isRunning={this.state.isRunning}
           />
-        </div>
+        </COUNTDOWN>
         <BackgroundAnimation />
-      </div>
+      </LAYOUT>
     );
   }
 }
