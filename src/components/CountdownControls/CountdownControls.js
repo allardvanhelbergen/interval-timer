@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'emotion';
-import styles from '../../utils/styleTokens';
+import tokens from '../../utils/styleTokens';
 
 
 const STYLES = css`
@@ -9,12 +9,12 @@ const STYLES = css`
 
   .button {
     background-color: transparent;
-    border-radius: ${styles.borderRadius};
+    border-radius: ${tokens.BorderRadiusDefault}rem;
     border-color: transparent;
-    color: ${styles.colorWhite};
+    color: ${tokens.ColorWhite};
     cursor: pointer;
     display: inline-block;
-    font-size: ${styles.fontSize};
+    font-size: ${tokens.FontSizeMedium}rem;
     font-weight: bold;
     margin: 1rem;
     padding: 1.5rem 3.5rem;

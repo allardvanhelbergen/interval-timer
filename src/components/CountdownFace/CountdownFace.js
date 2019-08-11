@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'emotion';
-import styles from '../../utils/styleTokens';
+import tokens from '../../utils/styleTokens';
 
 
 const STYLES = css`
-  color: ${styles.colorWhite};
+  color: ${tokens.ColorWhite};
+  font-family: ${tokens.fontFamilyBold};
   font-size: 32rem;
   font-weight: 900;
   text-align: center;

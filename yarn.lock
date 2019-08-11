@@ -1812,6 +1812,11 @@
     lodash.unescape "4.0.1"
     semver "5.5.0"
 
+"@vanhelbergen/design-tokens@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@vanhelbergen/design-tokens/-/design-tokens-0.0.3.tgz#89be7cc48bec11cae22505d4fa275ee47b20109f"
+  integrity sha512-UJi2oIk8ONoH3uVmiNq60ti0LQUA5bCCT4jmMFDatRW5aIiWrp5XUrHfHmiBnD2RqCfid4dtYC9I7iTKjc304Q==
+
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.8.5.tgz#51b1c5fe6576a34953bf4b253df9f0d490d9e359"

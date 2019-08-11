@@ -5,14 +5,14 @@ import BackgroundAnimation from '../BackgroundAnimation';
 // import IntervalList from "../IntervalList";
 import CountdownFace from "../CountdownFace";
 import CountdownControls from "../CountdownControls";
-import styles from "../../utils/styleTokens";
+import tokens from "../../utils/styleTokens";
 
 const LAYOUT = styled.div`
   align-items: center;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  font-family: ${styles.fontFamily};
+  font-family: ${tokens.FontFamilySystem};
 `;
 
 const COUNTDOWN = styled.div`

@@ -6,7 +6,7 @@ import tokens from '../../utils/styleTokens';
 const particleSize = 10; // vmin
 const animationDuration = 6;
 const particleCount = 10;
-const colors = [ tokens.colorGray1, tokens.colorGray2, tokens.colorGray4 ];
+const colors = [ tokens.ColorGray1, tokens.ColorGray2, tokens.ColorGray4 ];
 
 let randomInt = (max, min = 0) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -18,7 +18,7 @@ let randomInt = (max, min = 0) => {
 const Background = styled.div`
   width: 100vw;
   height: 100vh;
-  background: ${tokens.colorGray3};
+  background: ${tokens.ColorGray3};
   z-index: -1;
   position: absolute;
   top: 0;

@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'emotion';
-import styles from '../../utils/styleTokens';
+import tokens from '../../utils/styleTokens';
 
 
 const STYLES = css`
   background-color: rgba(0, 0, 0, .1);
-  border-radius: ${styles.borderRadius};
+  border-radius: ${tokens.BorderRadiusDefault}rem;
   margin: 20px;
   min-height: 300px;
   padding: 10px;
@@ -14,12 +14,12 @@ const STYLES = css`
 
   .interval {
     margin: 10px 0;
-    border-radius: ${styles.borderRadius};
+    border-radius: ${tokens.BorderRadiusDefault}rem;
     text-align: left;
 
     &--current {
-      background-color: ${styles.colorPrimary};
-      color: ${styles.colorWhite};
+      background-color: ${tokens.ColorPrimary};
+      color: ${tokens.ColorWhite};
     }
 
     .time,
