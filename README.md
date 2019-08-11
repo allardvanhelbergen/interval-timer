@@ -13,8 +13,11 @@ A react interval timer for me to learn stuff.
 
 ## Designs
 
-Can be found at https://www.figma.com/file/MVnqo5ciE5BS7TaDMrNreYeP/Interval-timer
+Can be found at https://www.figma.com/file/MVnqo5ciE5BS7TaDMrNreYeP/Interval-timer.
 
+## Deployment
+
+Site automagically deploys to Netlify at https://allards-interval-timer.netlify.com/.
 
 # Create React App
 
