@@ -23,6 +23,7 @@ const Background = styled.div`
   position: absolute;
   top: 0;
   left: 0;
+  overflow: hidden;
 
   & span {
     width: ${particleSize}vmin;
