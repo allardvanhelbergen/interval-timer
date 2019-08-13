@@ -48,8 +48,12 @@ function CountdownFace(props) {
 
 
 CountdownFace.propTypes = {
-  time: PropTypes.number.isRequired
+  time: PropTypes.any
 }
+
+CountdownFace.defaultProps = {
+  intervals: ['-']
+};
 
 
 export default CountdownFace;

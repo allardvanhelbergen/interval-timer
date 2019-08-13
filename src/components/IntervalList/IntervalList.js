@@ -29,7 +29,7 @@ const STYLES = css`
     }
 
     .time {
-      width: 100px;
+      width: 30px;
       text-align: right;
     }
   }
@@ -39,7 +39,7 @@ const STYLES = css`
 function IntervalList(props) {
   return (
     <div className={STYLES}>
-      {props.intervals.map((interval, i) => {
+      {props.intervals && props.intervals.map((interval, i) => {
         const {time, description} = interval;
 
         return (
@@ -48,8 +48,8 @@ function IntervalList(props) {
               onClick={props.startIntervalFunc.bind(this, i)}
               className={'interval ' + ((i === props.currentInterval) ? 'interval--current' : '')}
           >
-            <div className="time">{time}</div>
-            <div className="description">{description}</div>
+            <span className="time">{time}</span>
+            <span className="description">{description}</span>
           </div>
         )
       })}
@@ -66,7 +66,7 @@ IntervalList.propTypes = {
 
 IntervalList.defaultProps ={
   currentInterval: 0,
-  intervals: 0,
+  intervals: null,
   startIntervalFunc: () => {},
 };
 

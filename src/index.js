@@ -4,14 +4,14 @@ import { injectGlobal } from 'emotion';
 import App from './components/App';
 import { globalStyles } from './utils/globalStyles';
 import * as serviceWorker from './serviceWorker';
-import * as intervalData from './intervals.json';
+
 
 injectGlobal`
   ${globalStyles}
 `;
 
 ReactDOM.render(
-  <App intervals={intervalData.intervals}/>,
+  <App />,
   document.getElementById('root')
 );
 

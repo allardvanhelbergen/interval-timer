@@ -1,11 +1,12 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import styled from "@emotion/styled";
+import React, { Component } from 'react';
+import styled from '@emotion/styled';
 import BackgroundAnimation from '../BackgroundAnimation';
-// import IntervalList from "../IntervalList";
-import CountdownFace from "../CountdownFace";
-import CountdownControls from "../CountdownControls";
-import tokens from "../../utils/styleTokens";
+import IntervalList from '../IntervalList';
+import CountdownFace from '../CountdownFace';
+import CountdownControls from '../CountdownControls';
+import tokens from '../../utils/styleTokens';
+import loadGapi from '../../utils/googleApi';
+
 
 const LAYOUT = styled.div`
   align-items: center;
@@ -31,7 +32,8 @@ class App extends Component {
     this.state = {
       currentInterval: 0,
       isRunning: false,
-      timeRemaining: 0
+      timeRemaining: null,
+      intervals: null,
     };
 
     this.handleStartInterval = this.handleStartInterval.bind(this);
@@ -51,10 +53,10 @@ class App extends Component {
   handleStartInterval() {
     let newInterval = arguments[0];
 
-    this.setState((currentState, props) => {
+    this.setState((currentState) => {
       return {
         currentInterval: newInterval,
-        timeRemaining: props.intervals[newInterval].time
+        timeRemaining: currentState.intervals[newInterval].time
       };
     });
   }
@@ -62,13 +64,13 @@ class App extends Component {
   handleCountdownEnd() {
     let nextInterval = this.state.currentInterval + 1;
 
-    if (nextInterval >= this.props.intervals.length) {
+    if (nextInterval >= this.state.intervals.length) {
       this.stop();
     } else {
-      this.setState((currentState, props) => {
+      this.setState((currentState) => {
         return {
           currentInterval: nextInterval,
-          timeRemaining: props.intervals[nextInterval].time
+          timeRemaining: currentState.intervals[nextInterval].time
         };
       });
     }
@@ -85,9 +87,9 @@ class App extends Component {
   reset() {
     this.stop();
 
-    this.setState((currentState, props) => {
+    this.setState((currentState) => {
       return {
-        timeRemaining: props.intervals[currentState.currentInterval].time
+        timeRemaining: currentState.intervals[currentState.currentInterval].time
       };
     });
 
@@ -95,8 +97,9 @@ class App extends Component {
   }
 
   start() {
-    this.setState(() => {
+    this.setState((currentState) => {
       return {
+        timeRemaining: currentState.intervals[currentState.currentInterval].time,
         isRunning: true
       };
     });
@@ -131,10 +134,14 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.setState((currentState, props) => {
-      return {
-        timeRemaining: props.intervals[currentState.currentInterval].time
-      };
+    // Load the Google API client library.
+    loadGapi((data, error) => {
+      if (data) {
+        const intervals = data.intervals;
+        this.setState({ intervals });
+      } else {
+        console.error(error);
+      }
     });
   }
 
@@ -145,11 +152,11 @@ class App extends Component {
   render() {
     return (
       <LAYOUT>
-        {/* <IntervalList
-          intervals={this.props.intervals}
+        <IntervalList
+          intervals={this.state.intervals}
           currentInterval={this.state.currentInterval}
           startIntervalFunc={this.handleStartInterval}
-        /> */}
+        />
         <COUNTDOWN>
           <CountdownFace time={this.formatTime(this.state.timeRemaining)} />
           <CountdownControls
@@ -163,13 +170,5 @@ class App extends Component {
     );
   }
 }
-
-App.propTypes = {
-  intervals: PropTypes.array
-};
-
-App.defaultProps = {
-  intervals: [2, 3, 4]
-};
 
 export default App;
