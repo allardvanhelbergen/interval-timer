@@ -1,50 +1,46 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'emotion';
+import styled from '@emotion/styled';
 import tokens from '../../utils/styleTokens';
 
 
-const STYLES = css`
-  grid-row-start: 2;
+const ControlContainer = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`;
 
-  .button {
-    background-color: transparent;
-    border-radius: ${tokens.BorderRadiusDefault}rem;
-    border-color: transparent;
-    color: ${tokens.ColorWhite};
-    cursor: pointer;
-    display: inline-block;
-    font-size: ${tokens.FontSizeMedium}rem;
-    font-weight: bold;
-    margin: 1rem;
-    padding: 1.5rem 3.5rem;
-    text-decoration: none;
-    width: 12rem;
-  }
-  
-  .button:hover {
-    background-color: #a1a1a1;
-    border: 1px solid #929292;
-    text-shadow: 0 1px 0 #929292;
+const Control = styled.button`
+  background-color: transparent;
+  border-radius: ${tokens.BorderRadiusDefault}rem;
+  border-color: transparent;
+  color: ${tokens.ColorWhite};
+  cursor: pointer;
+  font-size: ${tokens.FontSizeMedium}rem;
+  font-weight: bold;
+  width: 12rem;
+  min-height: ${tokens.grid * 6}px;
+  min-width: ${tokens.grid * 6}px;
+
+  &:hover {
+    border: 1px solid ${tokens.ColorGray4};
   }
 
-  .button:active {
-    background-color: #323232;
-    position: relative;
+  &:active {
+    background-color: ${tokens.ColorBlack};
   }
 `;
 
 
 function CountdownControls(props) {
   return (
-    <div className={STYLES}>
-      <button className='button' onClick={props.startStop}>
+    <ControlContainer>
+      <Control onClick={props.startStop}>
         {(props.isRunning) ? 'Stop' : 'Start'}
-      </button>
-      <button className='button' onClick={props.reset}>
+      </Control>
+      <Control onClick={props.reset}>
         Reset
-      </button>
-    </div>
+      </Control>
+    </ControlContainer>
   );
 }
 
