@@ -7,7 +7,7 @@ import tokens from '../../utils/styleTokens';
 const STYLES = css`
   color: ${tokens.ColorWhite};
   font-family: ${tokens.fontFamilyBold};
-  font-size: 38vw;
+  font-size: 34vw;
   font-variant-numeric: tabular-nums;
   text-align: center;
   
