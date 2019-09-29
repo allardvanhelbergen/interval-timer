@@ -1,59 +1,75 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'emotion';
+import styled from '@emotion/styled';
 import tokens from '../../utils/styleTokens';
 
 
-const STYLES = css`
-  background-color: rgba(0, 0, 0, .1);
+const IntervalListContainer = styled.ul`
+  background-color: rgba(256, 256, 256, .2);
   border-radius: ${tokens.BorderRadiusDefault}rem;
-  margin: 20px;
-  min-height: 300px;
-  padding: 10px;
-  width: 400px;
+  padding: ${tokens.grid}px;
+  margin: 0;
+  min-height: ${tokens.grid * 32}px;
+  list-style: none;
+`;
 
-  .interval {
-    margin: 10px 0;
-    border-radius: ${tokens.BorderRadiusDefault}rem;
-    text-align: left;
+const Interval = styled.li`
+  display: flex;
+  margin: ${tokens.grid}px 0 0;
+  border-radius: ${tokens.BorderRadiusDefault}rem;
 
-    &--current {
-      background-color: ${tokens.ColorPrimary};
-      color: ${tokens.ColorWhite};
-    }
+  &:first-of-type {
+    margin: 0;
+  }
 
-    .time,
-    .description {
-      display: inline-block;
-      padding: 10px 20px;
-    }
+  &:hover {
+    background-color: inherit;
+    cursor: pointer;
+  }
 
-    .time {
-      width: 30px;
-      text-align: right;
-    }
+  &:active {
+    background-color: ${tokens.ColorBlack};
+    color: ${tokens.ColorWhite};
+  }
+
+  &.current {
+    background-color: ${tokens.ColorPrimary};
+    color: ${tokens.ColorWhite};
+  }
+
+  .time,
+  .description {
+    padding: ${tokens.grid}px ${tokens.grid * 2}px;
+  }
+
+  .time {
+    text-align: right;
+    flex-basis: 3ch;
+    font-variant-numeric: tabular-nums;
   }
 `;
 
 
 function IntervalList(props) {
   return (
-    <div className={STYLES}>
-      {props.intervals && props.intervals.map((interval, i) => {
-        const {time, description} = interval;
+    <nav>
+      <IntervalListContainer>
+        {props.intervals && props.intervals.map((interval, i) => {
+          const {time, description} = interval;
 
-        return (
-          <div
-              key={time + '-' + i}
-              onClick={props.startIntervalFunc.bind(this, i)}
-              className={'interval ' + ((i === props.currentInterval) ? 'interval--current' : '')}
-          >
-            <span className="time">{time}</span>
-            <span className="description">{description}</span>
-          </div>
-        )
-      })}
-    </div>
+          return (
+            <Interval
+                key={time + '-' + i}
+                onClick={props.startIntervalFunc.bind(this, i)}
+                className={(i === props.currentInterval) ? 'current' : ''}
+            >
+              <div className="time">{time}</div>
+              <div className="description">{description}</div>
+            </Interval>
+          )
+        })}
+      </IntervalListContainer>
+    </nav>
   );
 }
 
