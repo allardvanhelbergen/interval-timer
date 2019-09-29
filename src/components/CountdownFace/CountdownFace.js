@@ -7,10 +7,9 @@ import tokens from '../../utils/styleTokens';
 const STYLES = css`
   color: ${tokens.ColorWhite};
   font-family: ${tokens.fontFamilyBold};
-  font-size: 32rem;
-  font-weight: 900;
+  font-size: 38vw;
+  font-variant-numeric: tabular-nums;
   text-align: center;
-  grid-row-start: 1;
   
   .time--some {
     color: gold;
