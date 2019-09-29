@@ -8,21 +8,26 @@ import tokens from '../../utils/styleTokens';
 import loadGapi from '../../utils/googleApi';
 
 
-const LAYOUT = styled.div`
-  align-items: center;
+const MainContainer = styled.main`
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  font-family: ${tokens.FontFamilySystem};
+  align-items: center;
+  flex-wrap: wrap;
+  height: 100vh;
+  padding: ${tokens.grid * 2}px;
 `;
 
-const COUNTDOWN = styled.div`
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: 75% 25%;
-  justify-items: center;
-  justify-content: center;
-  align-content: center;
+const Sidebar = styled.section`
+  /* sets max-width of sidebar */
+  flex-basis: ${45 * tokens.grid}px; 
+  flex-grow: 1;
+`;
+
+const Countdown = styled.section`
+  flex-basis: 0;
+  flex-grow: 999;
+  /* Pushes the sidebar away as it take precedence of its flex-basis */
+  min-width: 62%;
+  margin-bottom: ${tokens.grid * 2}px;
 `;
 
 class App extends Component {
@@ -32,22 +37,13 @@ class App extends Component {
     this.state = {
       currentInterval: 0,
       isRunning: false,
-      timeRemaining: null,
-      intervals: null,
+      timeRemaining: '-',
+      intervals: [{time: '-', description: 'Loading...'}],
     };
 
     this.handleStartInterval = this.handleStartInterval.bind(this);
     this.reset = this.reset.bind(this);
     this.startStop = this.startStop.bind(this);
-  }
-
-  formatTime(time) {
-    if (time > 60) {
-      let min = Math.floor(time / 60);
-      let sec = time % 60;
-      return `${min}:${sec}`;
-    }
-    return time;
   }
 
   handleStartInterval() {
@@ -151,22 +147,26 @@ class App extends Component {
 
   render() {
     return (
-      <LAYOUT>
-        <IntervalList
-          intervals={this.state.intervals}
-          currentInterval={this.state.currentInterval}
-          startIntervalFunc={this.handleStartInterval}
-        />
-        <COUNTDOWN>
-          <CountdownFace time={this.formatTime(this.state.timeRemaining)} />
-          <CountdownControls
-            startStop={this.startStop}
-            reset={this.reset}
-            isRunning={this.state.isRunning}
-          />
-        </COUNTDOWN>
+      <>
+        <MainContainer>
+          <Countdown>
+            <CountdownFace time={this.state.timeRemaining} />
+            <CountdownControls
+              startStop={this.startStop}
+              reset={this.reset}
+              isRunning={this.state.isRunning}
+            />
+          </Countdown>
+          <Sidebar>
+            <IntervalList
+              intervals={this.state.intervals}
+              currentInterval={this.state.currentInterval}
+              startIntervalFunc={this.handleStartInterval}
+            />
+          </Sidebar>
+        </MainContainer>
         <BackgroundAnimation />
-      </LAYOUT>
+      </>
     );
   }
 }
