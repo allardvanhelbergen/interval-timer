@@ -30,7 +30,7 @@ const Background = styled.div`
     height: ${particleSize}vmin;
     border-radius: ${particleSize}vmin;
     backface-visibility: hidden;
-    position: absolute;
+    position: fixed;
     animation-name: move;
     animation-duration: ${animationDuration};
     animation-timing-function: linear;
