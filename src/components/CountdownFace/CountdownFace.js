@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'emotion';
+import styled from '@emotion/styled';
 import tokens from '../../utils/styleTokens';
 
 
-const STYLES = css`
+const Face = styled.div`
   color: ${tokens.ColorWhite};
   font-family: ${tokens.fontFamilyBold};
   font-size: 34vw;
@@ -37,11 +37,11 @@ function CountdownFace(props) {
   }
 
   return (
-    <div className={STYLES}>
+    <Face>
       <span className={timeClass}>
         {props.time}
       </span>
-    </div>
+    </Face>
   );
 }
 
