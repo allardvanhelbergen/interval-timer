@@ -2,13 +2,10 @@
 
 A react interval timer for me to learn stuff.
 
-## Setup and run
+## Development
 
 - `yarn`
 - `yarn start`
-
-## Storybook
-
 - `yarn storybook`
 
 ## Designs
@@ -18,6 +15,12 @@ Can be found at https://www.figma.com/file/MVnqo5ciE5BS7TaDMrNreYeP/Interval-tim
 ## Deployment
 
 Site automagically deploys to Netlify at https://allards-interval-timer.netlify.com/.
+
+## Other
+
+The connected spreadsheet is at https://docs.google.com/spreadsheets/d/1IncUK1100_iLzcS3APHq_p66O29RQo_t-W7oiVZYPeA/edit#gid=0.
+
+---
 
 # Create React App
 
